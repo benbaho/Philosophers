@@ -1,7 +1,7 @@
 NAME = philo
 SRC = $(shell find . -name "*.c")
 FLAGS = -Wall -Wextra -Werror
-CC = gcc -g 
+CC = @gcc -g
 OBJ = $(SRC:.c=.o)
 RM = rm -rf
 
@@ -10,12 +10,15 @@ all: $(NAME)
 
 $(NAME): $(OBJ) 
 		$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+		@echo Compile Done!
 
 clean:
-	$(RM) $(OBJ)
+	@$(RM) $(OBJ)
+	@echo Object files deleted.
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@echo Program deleted.
 	
 re:	fclean all
 

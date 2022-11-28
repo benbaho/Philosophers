@@ -6,7 +6,7 @@
 /*   By: bdurmus <bdurmus@student.42kocaeli.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 13:50:01 by bdurmus           #+#    #+#             */
-/*   Updated: 2022/11/27 17:31:42 by bdurmus          ###   ########.fr       */
+/*   Updated: 2022/11/28 12:48:18 by bdurmus          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int         ft_atoi (char *s);
 uint64_t	gettime(void);
 
 void printthreadm(int id, char *s, philos *stk);
-void createthread(philos *stk, int i);
+void	passtime(int time, list *stk);
+int createthread(philos *stk, int i);
+int deadcheck(philos *stk);
 
 #endif
