@@ -6,7 +6,7 @@
 /*   By: bdurmus <bdurmus@student.42kocaeli.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 13:49:54 by bdurmus           #+#    #+#             */
-/*   Updated: 2022/11/28 16:57:43 by bdurmus          ###   ########.fr       */
+/*   Updated: 2022/11/29 16:55:43 by bdurmus          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int initarguments(int ac, char **av, philos *stk)
     stk->time_to_die = ft_atoi(av[2]);
     stk->time_to_eat = ft_atoi(av[3]);
     stk->time_to_sleep = ft_atoi(av[4]);
+    stk->start_time = gettime();
+    stk->check = 0;
     if (ac == 6)
         stk->must_eat = ft_atoi(av[5]);
     else
@@ -47,10 +49,7 @@ int initarguments(int ac, char **av, philos *stk)
     ac = 0;
     pthread_mutex_init(&stk->random, NULL);
     while (stk->number_of_philo > ac)
-    {
-        pthread_mutex_init(&stk->fork_mutex[ac], NULL);
-        ac++;
-    }
+        pthread_mutex_init(&stk->fork_mutex[ac++], NULL);
     if (!initphilos(stk, 0))
         return (0);
     return (1);
@@ -58,16 +57,17 @@ int initarguments(int ac, char **av, philos *stk)
 
 int main (int ac, char **av)
 {
-    philos   *stk;
+    philos      *stk;
+    uint64_t    time;
 
     stk = malloc(sizeof(philos));
     if (ac != 5 && ac != 6)
     {
-        printf("More or not enough arguments.");
+        printf(RED"More or not enough arguments."RESET);
         return (0);
     }
-    if (!initarguments(ac, av, stk))
+    if (!checkargs(av, 1) || !initarguments(ac, av, stk))
         return (0);
-    if (!createthread(stk, 0))
+    if (!createthread(stk, 0, time))
         return (0);
 }

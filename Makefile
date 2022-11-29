@@ -10,15 +10,15 @@ all: $(NAME)
 
 $(NAME): $(OBJ) 
 		$(CC) $(FLAGS) $(OBJ) -o $(NAME)
-		@echo Compile Done!
+		@echo "\x1B[35m"Compile Done!"\x1b[0m"
 
 clean:
 	@$(RM) $(OBJ)
-	@echo Object files deleted.
+	@echo "\x1b[36m"Object files deleted."\x1b[0m"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo Program deleted.
+	@echo "\x1b[36m"Program deleted."\x1b[0m"
 	
 re:	fclean all
 
