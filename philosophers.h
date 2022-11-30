@@ -6,7 +6,7 @@
 /*   By: bdurmus <bdurmus@student.42kocaeli.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 13:50:01 by bdurmus           #+#    #+#             */
-/*   Updated: 2022/11/29 16:54:24 by bdurmus          ###   ########.fr       */
+/*   Updated: 2022/11/30 14:57:15 by bdurmus          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,38 +30,40 @@
 
 typedef struct addion
 {
-    int         id;
-    int         l_forkid;
-    int         r_forkid;
-    int         count_eat;
-    uint64_t    last_eat;
-    pthread_t   th_id;
-    struct p_stk *s_stk;
-} list;
+	int				id;
+	int				l_forkid;
+	int				r_forkid;
+	int				count_eat;
+	uint64_t		last_eat;
+	pthread_t		th_id;
+	struct p_stk	*s_stk;
+}	t_list;
 
 typedef struct p_stk
 {
-    int             id;
-    int             must_eat;
-    int             time_to_die;
-    int             time_to_eat;
-    int             time_to_sleep;
-    int             number_of_philo;
-    int             dead;
-    int             check;
-    list            *link;
-    uint64_t        start_time;
-    pthread_mutex_t random;
-    pthread_mutex_t *fork_mutex;
-} philos;
+	int					id;
+	int					must_eat;
+	int					time_to_die;
+	int					time_to_eat;
+	int					time_to_sleep;
+	int					number_of_philo;
+	int					dead;
+	int					check;
+	t_list				*link;
+	uint64_t			start_time;
+	pthread_mutex_t		random;
+	pthread_mutex_t		*fork_mutex;
+}	t_philos;
 
-int         ft_atoi (char *s);
-int         createthread(philos *stk, int i, uint64_t time);
-int         deadcheck(philos *stk, int i, uint64_t time);
-int checkargs(char **av, int i);
-void	    passtime(int time, list *stk);
-void        printthreadm(int id, char *s, philos *stk);
+int			ft_atoi(char *s);
+int			eatcheck(t_list *stk);
+int			checkargs(char **av, int i);
+int			deadcheck(t_philos *stk, int i, uint64_t time);
+int			createthread(t_philos *stk, int i, uint64_t time);
+
 uint64_t	gettime(void);
-int eatcheck(list *stk);
 
-# endif
+void		passtime(int time, t_list *stk);
+void		printthreadm(int id, char *s, t_philos *stk);
+
+#endif
