@@ -6,7 +6,7 @@
 /*   By: bdurmus <bdurmus@student.42kocaeli.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 14:27:37 by bdurmus           #+#    #+#             */
-/*   Updated: 2022/11/30 14:55:56 by bdurmus          ###   ########.fr       */
+/*   Updated: 2022/12/03 18:12:28 by bdurmus          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,11 @@ void	passtime(int time, t_list *stk)
 			break ;
 		usleep(10);
 	}
+}
+
+void	freesth(t_list *stk, t_philos *philos)
+{
+	free (stk);
+	free (philos->fork_mutex);
+	free (philos);
 }

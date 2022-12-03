@@ -6,7 +6,7 @@
 /*   By: bdurmus <bdurmus@student.42kocaeli.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 14:26:46 by bdurmus           #+#    #+#             */
-/*   Updated: 2022/11/30 17:34:15 by bdurmus          ###   ########.fr       */
+/*   Updated: 2022/12/01 14:26:00 by bdurmus          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int	checkargs(char **av, int i)
 {
 	while (av[i])
 	{
+		if (i == 1 && ft_atoi(av[i]) < 1)
+			return (0);
 		if (ft_atoi(av[i]) == -1)
 			return (0);
 		i++;

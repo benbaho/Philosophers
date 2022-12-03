@@ -6,7 +6,7 @@
 /*   By: bdurmus <bdurmus@student.42kocaeli.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 15:08:19 by bdurmus           #+#    #+#             */
-/*   Updated: 2022/11/30 17:37:24 by bdurmus          ###   ########.fr       */
+/*   Updated: 2022/12/03 18:10:05 by bdurmus          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int	createthread(t_philos *stk, int i, uint64_t time)
 	i = 0;
 	while (i < stk->number_of_philo)
 		pthread_join(stk->link[i++].th_id, NULL);
-	
 	while (i < stk->number_of_philo)
 		pthread_mutex_destroy(&stk->fork_mutex[i--]);
 	pthread_mutex_destroy(&stk->random);

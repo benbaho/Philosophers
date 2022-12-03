@@ -6,7 +6,7 @@
 /*   By: bdurmus <bdurmus@student.42kocaeli.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 13:50:01 by bdurmus           #+#    #+#             */
-/*   Updated: 2022/11/30 14:57:15 by bdurmus          ###   ########.fr       */
+/*   Updated: 2022/12/01 14:00:09 by bdurmus          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int			createthread(t_philos *stk, int i, uint64_t time);
 uint64_t	gettime(void);
 
 void		passtime(int time, t_list *stk);
+void		freesth(t_list *stk, t_philos *philos);
 void		printthreadm(int id, char *s, t_philos *stk);
 
 #endif

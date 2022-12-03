@@ -6,7 +6,7 @@
 /*   By: bdurmus <bdurmus@student.42kocaeli.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 13:49:54 by bdurmus           #+#    #+#             */
-/*   Updated: 2022/11/30 17:45:40 by bdurmus          ###   ########.fr       */
+/*   Updated: 2022/12/01 14:13:56 by bdurmus          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,23 @@ int	main(int ac, char **av)
 	t_philos		*stk;
 	uint64_t		time;
 
-	stk = malloc(sizeof(t_philos));
 	if (ac != 5 && ac != 6)
 	{
 		printf(RED"More or not enough arguments."RESET);
 		return (0);
 	}
-	if (!checkargs(av, 1) || !init_arguments(ac, av, stk))
+	if (!checkargs(av, 1))
 		return (0);
+	stk = malloc(sizeof(t_philos));
+	if (!init_arguments(ac, av, stk))
+	{
+		freesth (stk->link, stk);
+		return (0);
+	}
 	if (!createthread(stk, 0, time))
+	{
+		freesth (stk->link, stk);
 		return (0);
-	free(stk);
+	}
+	freesth (stk->link, stk);
 }
